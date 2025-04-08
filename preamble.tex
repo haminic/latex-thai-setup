@@ -1,0 +1,116 @@
+\usepackage{amsmath,amssymb,fancyhdr,titlesec,float,xcolor,tcolorbox,derivative,siunitx}
+\usepackage[hidelinks]{hyperref}
+\usepackage[no-math]{fontspec}
+
+
+% ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+% ┃ --- Thai Font Configuration --- ┃
+% ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+\XeTeXlinebreaklocale "th"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.2pt
+
+% Set main font of the document
+\setmainfont[Path=fonts/, 
+    Scale=1.4, % ~1.0 for normal, ~1.4 for smaller fonts
+    BoldFont={LMSarabunNew-Bold.ttf},
+    ItalicFont={LMSarabunNew-Italic.ttf},
+    BoldItalicFont={LMSarabunNew-BoldItalic.ttf},
+]{LMSarabunNew-Regular.ttf}
+
+% Set sans font (used in the main title and titles of sections)
+\setsansfont[Path=fonts/, 
+    Scale=1.4, % ~1.0 for normal, ~1.4 for smaller fonts
+    BoldFont={LMSarabunNew-Bold.ttf},
+    ItalicFont={LMSarabunNew-Italic.ttf},
+    BoldItalicFont={LMSarabunNew-BoldItalic.ttf},
+]{LMSarabunNew-Regular.ttf}
+\renewcommand{\baselinestretch}{1.2}
+
+
+% ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+% ┃ --- Page Spacing Setup --- ┃
+% ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+\setlength{\headheight}{0.75in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\voffset}{-1.0in}
+\setlength{\headsep}{10pt}
+\setlength{\textwidth}{6.5in}
+\setlength{\headwidth}{6.5in}
+\setlength{\textheight}{8.75in}
+\setlength{\parskip}{0.8ex plus 0.4ex minus 0.2ex}
+\setlength{\footskip}{0.3in}
+\renewcommand{\footrulewidth}{0.0pt}
+\titlespacing*{\chapter}{0pt}{50pt}{30pt}
+\titlespacing*{\section}{0pt}{20pt}{5pt}
+\titlespacing*{\subsection}{0pt}{12pt}{4pt}
+
+
+% ┏━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+% ┃ --- Title Page Setup --- ┃
+% ┗━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{titlepage}  
+\vspace*{\fill}
+\begin{center}
+    \Huge{\sffamily\bfseries \@title}
+    
+    \LARGE{\sffamily by \@author}
+\end{center}
+\vspace*{\fill}
+\end{titlepage}
+}
+\makeatother
+
+
+% ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
+% ┃ --- Header & Footer --- ┃
+% ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+% Title macros (ignore this)
+\makeatletter
+\providecommand{\thedoctitle}{\@title}
+\providecommand{\thedocauthor}{\@author}
+\makeatother
+\newcommand{\currentchapter}{}
+\let\oldchapter\chapter
+\renewcommand{\chapter}[1]{\oldchapter{#1}\renewcommand{\currentchapter}{#1}}
+
+% First page of chapter
+\fancypagestyle{plain}{
+  \lhead{}
+  \chead{}
+  \rhead{}
+  \lfoot{}
+  \cfoot{\sffamily\thepage}
+  \rfoot{}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% Other
+\fancypagestyle{fancy}{
+  \lhead{\sffamily\thedoctitle\ by \thedocauthor}
+  \chead{}
+  \rhead{\sffamily\chaptertitlename\ \thechapter. \normalfont\sffamily\currentchapter}
+  \lfoot{}
+  \cfoot{\sffamily\thepage}
+  \rfoot{}
+  \renewcommand{\headrulewidth}{0.5pt}
+}
+
+
+% ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+% ┃ --- Chapters, Sections, Subsections Formatting --- ┃
+% ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+\newcommand{\accentcolor}[1]{\textcolor{purple}{#1}}
+
+\newcommand{\hsp}{\hspace{20pt}}
+\renewcommand{\chaptertitlename}{บทที่}
+\titleformat{\chapter}[hang]{\Huge\sffamily\bfseries}{\accentcolor{\chaptertitlename\ \thechapter}\hsp\hsp}{0pt}{\Huge\bfseries}
+\titleformat{\section}{\sffamily\LARGE}{\bfseries\accentcolor{\thesection.}}{0.5em}{\bfseries}
+\titleformat{\subsection}{\sffamily\Large}{\bfseries\accentcolor{\thesubsection.}}{0.5em}{\bfseries}
