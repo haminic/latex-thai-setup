@@ -1,4 +1,4 @@
-# Thai $\LaTeX$ Setup
+# $\LaTeX$ Thai Setup
 
 ## ▸ About 📖
 
