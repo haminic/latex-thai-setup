@@ -9,4 +9,4 @@ Feel free to use or modify this setup for your own documents. The included examp
 ## ▸ How to Use ⚙️
 
 - Copy the entire [`preamble.tex`](preamble.tex) file, put it in your document's root directory, and follow the first few lines in the [example document](main.tex). Alternatively, you can copy the content of the preamble directly into your document’s main file if you prefer.
-- Don't forget to set your compiler to $\XeLaTeX$.
+- Don't forget to set your compiler to XeLaTeX.
